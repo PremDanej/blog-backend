@@ -3,6 +3,7 @@ from connection.connection import engine
 from routers import (
     user,
     blog,
+    login
 )
 from schema.Base import Base
 
@@ -15,5 +16,6 @@ def home():
     return "Welcome to Blog"
 
 
+app.include_router(router=login.router)
 app.include_router(router=blog.router)
 app.include_router(router=user.router)
