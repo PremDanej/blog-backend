@@ -1,5 +1,6 @@
 from datetime import timedelta, datetime, timezone
 from jwt import encode, decode, InvalidTokenError
+from pydantic import ValidationError
 from model.jwt.TokenData import TokenData
 
 # to get a string like this run:
@@ -26,7 +27,8 @@ def verify_token(data: str, credentials_exception):
         email = payload.get("sub")
         if email is None:
             raise credentials_exception
-        token_data = TokenData(email=email)
+        token_scopes = payload.get("scopes", [])
+        token_data = TokenData(email=email, scopes=token_scopes)
         return token_data
-    except InvalidTokenError:
+    except (InvalidTokenError, ValidationError):
         raise credentials_exception
