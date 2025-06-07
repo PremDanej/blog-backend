@@ -1,6 +1,29 @@
 # Blog-Backend
 
-This is Blog-Backend application for just learning purpose.
+This is Blog-Backend application for just learning purpose. Using **SQLite** with **SQLAlchemy** and **FastAPI**.
+
+### Project Structure
+
+```text
+blog-backend/
+├── app/
+│   ├── auth/
+│   ├── blog/
+│   ├── connection/
+│   ├── hashing/
+│   └── model/
+│       ├── request/
+│       └── response/
+│   ├── repository/
+│   ├── routers/
+│   ├── schema/
+│   └── requirements.txt
+├── requirements.txt
+├── run.py
+├── Dockerfile.txt
+├── docker-compose.yml
+└── .env
+```
 
 ### Tools
 
@@ -31,7 +54,7 @@ This is Blog-Backend application for just learning purpose.
 
 1. Clone this repository
    ``` commandline
-   git clone https://github.com/PremDanej/RepoName
+   git clone https://github.com/PremDanej/blog-backend.git
    ```
 
 2. Go to the main folder
@@ -44,12 +67,20 @@ This is Blog-Backend application for just learning purpose.
    python -m venv .venv
    ```
 
-4. Install all dependencies -
+4. Create `.env` file and paste it
+   ``` properties
+   HOST=127.0.0.1
+   PORT=8000
+   ```
+
+5. Install all dependencies -
    ``` requirements
    pip install -r requirements.txt
    ```
 
-5. Run the project by
+6. Run the project by
    ``` commandline
-   python run.py
+   python run.py 
+   ----- OR -----
+   uvicorn app.blog.main:app --reload
    ```
