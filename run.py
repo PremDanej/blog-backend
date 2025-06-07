@@ -9,7 +9,7 @@ if __name__ == "__main__":
     port = os.getenv("PORT")
 
     uvicorn.run(
-        app="blog.main:app",
+        app="app.blog.main:app",
         host=host,
         port=int(port),
         reload=True,
